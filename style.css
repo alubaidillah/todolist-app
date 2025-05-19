@@ -163,6 +163,7 @@ ul li span:hover{
 
     .todo-app h2 {
         font-size: 20px;
+        padding-left: 10px;
     }
 
     .todo-app h2 img {
