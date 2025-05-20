@@ -1,4 +1,5 @@
 const inputBox = document.getElementById('input-box');
+const timeBox = document.getElementById('time-box');
 const listContainer = document.getElementById('list-container');
 
 const farindaTasks = [
@@ -24,9 +25,14 @@ function addTask() {
             span.innerHTML = '\u00d7';
             li.appendChild(span);
         });
-    } else {
+    } else { 
         let li = document.createElement('li');
         li.innerHTML = inputBox.value;
+        if (timeBox.value) {
+            li.setAttribute('data-time', timeBox.value);
+            li.innerHTML += ` <small>(${timeBox.value})</small>`;
+            scheduleNotification(inputBox.value, timeBox.value);
+        }
         listContainer.appendChild(li);
         let span = document.createElement('span');
         span.innerHTML = '\u00d7';
@@ -60,3 +66,19 @@ function showTask(){
 }
 
 showTask();
+
+function scheduleNotification(task, time) {
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+    const now = new Date();
+    const [hours, minutes] = time.split(':');
+    const notifTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, 0, 0);
+    let timeout = notifTime.getTime() - now.getTime();
+    if (timeout < 0) return; // Lewat waktunya
+
+    setTimeout(() => {
+        new Notification("Todolist Reminder", { body: `Saatnya: ${task}` });
+    }, timeout);
+}
+
