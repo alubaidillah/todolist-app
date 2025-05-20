@@ -164,7 +164,7 @@ ul li span:hover{
     }
 
     input{
-        max-width: 100px;
+        max-width: 90px;
     }
     .todo-app h2 {
         font-size: 20px;
