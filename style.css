@@ -55,6 +55,8 @@ input{
     font-weight: 14px;
 }
 
+
+
 button{
     border: none;
     outline: none;
@@ -161,6 +163,9 @@ ul li span:hover{
         padding: 15px 12px 30px;
     }
 
+    input{
+        max-width: 100px;
+    }
     .todo-app h2 {
         font-size: 20px;
         padding-left: 10px;

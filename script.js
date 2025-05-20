@@ -20,10 +20,13 @@ function addTask() {
         farindaTasks.forEach(task => {
             let li = document.createElement('li');
             li.innerHTML = task;
+            li.innerHTML = `${task} <small>(09:00)</small>`;
+            li.setAttribute('data-time', '09:00');
             listContainer.appendChild(li);
             let span = document.createElement('span');
             span.innerHTML = '\u00d7';
             li.appendChild(span);
+            scheduleNotification(task, '09:00');
         });
     } else { 
         let li = document.createElement('li');
@@ -39,11 +42,8 @@ function addTask() {
         li.appendChild(span);
     }
 
-    if(inputBox.value === 'Farinda' || inputBox.value === 'farinda') {
-        let li = document.createElement('li');
-        li.innerHTML = ''
-    }
     inputBox.value = '';
+    timeBox.value = '';
     saveData()
 }
 
