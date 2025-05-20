@@ -13,6 +13,8 @@ const farindaTasks = [
 function addTask() {
     if(inputBox.value === '') {
         alert('Please enter your task!');
+    } else if(timeBox.value === '') {
+        alert('Please enter the time!');
     } else if(inputBox.value.toLowerCase() === 'farinda') {
         // Hapus semua list yang ada
         listContainer.innerHTML = '';
